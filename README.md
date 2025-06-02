@@ -35,7 +35,7 @@ Logistic Regression matches the top F1, gives the highest recall, avoids overfit
 
 ## 📒 Notebook & Slides
 
-- **EDA + Modeling notebook:** [`notebooks/churn_modeling_exploration.ipynb`](notebooks/churn_modeling_exploration.ipynb)  
+- **EDA + Modeling notebook:** [`notebooks/churn_modeling_exploration.ipynb`](notebook/churn_modeling_exploration.ipynb)  
 - **Slide deck:** <https://docs.google.com/presentation/d/15nHl9ydwYCIzIfBo-hEmODlNJwKqVoqxpElqfxdKs_o/edit?usp=sharing>
 
 ---
@@ -44,22 +44,24 @@ Logistic Regression matches the top F1, gives the highest recall, avoids overfit
 
 ```text
 telecom-churn-predictor/
-├── app.py                       # Streamlit dashboard
-├── Churn_modeling.py            # Data cleaning, feature engineering, model training
+├── churn_app.py                 # Streamlit dashboard
 ├── requirements.txt             # Python dependencies
 ├── model/                       # Serialized model + helper objects
+│   ├── Churn_modeling.py            # Data cleaning, feature engineering, model training
 │   ├── churn_prediction_lr.pkl
 │   ├── rob_scaler.pkl
 │   ├── city_freq_dict.pkl
 │   ├── city_to_cluster.pkl
 │   └── means_churn_inputs.pkl
 ├── data/
-│   └── df_EDA.csv               # Aggregated data for dashboard visuals
+│   ├── train.csv                # Raw training split
+│   ├── test.csv                 # Raw test split
+│   ├── validation.csv           # Raw validation 
+│   └── df_EDA.csv               # Aggregated data used for dashboard visuals only
 ├── notebooks/
 │   └── churn_modeling_exploration.ipynb
 └── README.md
 ```
-
 ---
 
 ## 🌐 Live Demo
@@ -79,7 +81,7 @@ cd telecom-churn-predictor
 pip install -r requirements.txt
 
 # 3 – launch Streamlit
-streamlit run app.py
+streamlit run churn_app.py
 ```
 (Opens <http://localhost:8501> in your browser).
 
@@ -89,8 +91,8 @@ streamlit run app.py
 
 | Section | What you can do |
 |---------|-----------------|
-| **Predict Churn** | Fill a form → get churn probability & label. |
-| **Insights** | Explore churn by contract, tenure, city, charges, satisfaction, CLTV, etc. |
+| **Churn Predictor** | Fill a form → get churn probability & label. |
+| **Visualizations** | Explore churn by contract, tenure, city, charges, satisfaction, CLTV, etc. |
 
 ---
 
