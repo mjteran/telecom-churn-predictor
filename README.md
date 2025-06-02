@@ -17,17 +17,17 @@ This project:
 
 ## 🤖 Model Exploration & Selection
 
-| Model Tested | F1 / Recall (val) | Notes |
-|--------------|-------------------|-------|
-| Logistic Regression (L1) | **0.93 / 0.91** | *Chosen – best recall & interpretability* |
-| K-Nearest Neighbors | 0.86 / 0.79 | Baseline non-parametric |
-| Decision Tree | 0.82 / 0.81 | Simple tree |
-| SVM | 0.85 / 0.84 | High-dim space |
-| Random Forest | 0.91 / 0.87 | Ensemble |
-| XGBoost | 0.93 / 0.89 | Boosted trees |
+| Model  | Accuracy | F1 (churn) | Recall (churn) | Hyper-parameter Tuning |
+|--------|----------|------------|----------------|------------------------|
+| **Logistic Regression (L1)** | **0.9645** | **0.93** | **0.91** | Grid Search (C, penalty) |
+| K-Nearest Neighbors | 0.9304 | 0.86 | 0.79 | Elbow Method to pick optimal *k* |
+| Decision Tree | 0.9489 | 0.90 | 0.86 | Cross-validation on `max_depth` |
+| Support Vector Machine | 0.9574 | 0.92 | 0.89 | Grid Search on C / kernel |
+| Random Forest | 0.9574 | 0.92 | 0.87 | Grid Search (n_estimators, depth, etc.) |
+| XGBoost | 0.9617 | 0.93 | 0.90 | Grid Search (learning rate, depth, estimators) |
 
-**Why Linear?**  
-Logistic Regression matches the top F1, gives the highest recall, avoids overfitting, and remains fully explainable to stakeholders.
+**Why Logistic Regression?**  
+Logistic Regression matches the top F1, gives the highest recall, and avoids overfitting. It offered the best performance with simpler interpretation and faster computation.
 
 *Scaler:* `RobustScaler` | *Extra features:* GeoCluster (K-Means), frequency-encoded city, one-hot/ordinal/boolean encodings.
 
@@ -64,13 +64,20 @@ telecom-churn-predictor/
 ```
 ---
 
-## 🌐 Live Demo
+## 📊 Dashboard Highlights
 
-▶ **Try it now:** <https://mjteran-telecom-churn-predictor.streamlit.app>
+| Section | What you can do |
+|---------|-----------------|
+| **Churn Predictor** | Fill a form → get churn probability & label. |
+| **Visualizations** | Explore churn by contract, tenure, city, charges, satisfaction, CLTV, etc. |
 
 ---
+## ▶ **Try it now:**
 
-## 🚀 Run Locally
+### 🌐 Live Demo
+<https://mjteran-telecom-churn-predictor.streamlit.app>
+
+### 🚀 Run Locally
 
 ```bash
 # 1 – clone and enter repo
@@ -85,18 +92,7 @@ streamlit run churn_app.py
 ```
 (Opens <http://localhost:8501> in your browser).
 
----
-
-## 📊 Dashboard Highlights
-
-| Section | What you can do |
-|---------|-----------------|
-| **Churn Predictor** | Fill a form → get churn probability & label. |
-| **Visualizations** | Explore churn by contract, tenure, city, charges, satisfaction, CLTV, etc. |
-
----
-
-## 🛠 Requirements
+### 🛠 Requirements
 
 ```text
 pandas
@@ -112,5 +108,5 @@ streamlit
 
 ## 👩‍💻 Author
 
-**Maria Jose Teran** — Data Analyst & ML Enthusiast  
+**Maria Jose Teran** — Data Analyst & ML Learner  
 GitHub • [@mjteran](https://github.com/mjteran) | LinkedIn • [majoteran92](https://linkedin.com/in/majoteran92)
